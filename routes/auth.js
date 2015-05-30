@@ -15,8 +15,8 @@ function handleAuth(req, res, username, id) {
     req.session.user = username;
     req.session.user_id = id.toString();
     console.log("SESSION!!! " + req.session.user + "ID!!! " + req.session.user_id);
-    // res.end();
-    res.redirect('/dashboard');
+    res.end();
+    // res.redirect('/dashboard');
   });
 };
 
@@ -33,14 +33,14 @@ router.post('/login', passport.authenticate('local', { failureRedirect: 'login' 
   });
 });
 
-// Local Auth Sign-up
-router.get('/signup', function(req, res, next) {
-  res.sendFile(path.join(__dirname,'../public/signup.html'));
-});
-// Local Auth Sign-up
-router.get('/login', function(req, res, next) {
-  res.sendFile(path.join(__dirname,'../public/index.html'));
-});
+// // Local Auth Sign-up
+// router.get('/signup', function(req, res, next) {
+//   res.sendFile(path.join(__dirname,'../public/signup.html'));
+// });
+// // Local Auth Sign-up
+// router.get('/login', function(req, res, next) {
+//   res.sendFile(path.join(__dirname,'../public/index.html'));
+// });
 
 
 // Local Auth Sign-up

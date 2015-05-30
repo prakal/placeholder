@@ -7,7 +7,8 @@ var passport     = require('passport');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-	res.sendFile(path.join(__dirname,'../public/dashboard.html'));
+	// res.sendFile(path.join(__dirname,'../public/app/dashboard/dashboard.html'));
+	res.end();
 });
 
 module.exports = router;

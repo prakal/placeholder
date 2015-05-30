@@ -1,0 +1,17 @@
+<div layout="row">
+  <div class="center-form">
+    <h1 class="auth_title">Sign-in</h1>
+    <form ng-submit="signin()">
+    <div>
+      <label for="username">Username</label>
+      <input type="text" class="form-control" placeholder="Username" ng-model="user.username" required>
+    </div>
+    <div>
+      <label for="password">Password</label>
+      <input type="password" class="form-control" placeholder="Password" ng-model="user.password" required>
+    </div>
+      <button type="submit">Sign-in</button>
+    </form>
+  <a id="newAuth" href="#/signup">Don't have an account? <strong>Sign-up</strong> ...</a>
+    </div>
+</div>
