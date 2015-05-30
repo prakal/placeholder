@@ -20,5 +20,7 @@ npm-debug.log
 
 public/js/vendor
 
+# bower stuff
+public/lib
 
 public/css
