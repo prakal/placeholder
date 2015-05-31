@@ -1,3 +1,12 @@
-<div>
-    Classes enrolled in for Student:
+<div ng-controller="AuthController" ng-click="signout()"> SIGN OUT! </div>
+<div ng-model="user">
+    Classes enrolled in for {{ user.name }}:
+</div>
+<input type="text" ng-model="search" placeholder="Search classes"></span>
+<div ng-repeat="class in classes | filter:search | orderBy:'created_at'" ng-click="openClass(class)">
+
+  <div>
+      {{ class.description }}
+  </div>
+
 </div>

@@ -457,6 +457,26 @@ var DBQuery = {
     });
   },
 
+  getClassOfStudentUsing : function(using, info, callback){
+    db.knex('classes')
+      .join('classes_students','classes.id','=','classes_students.class_id')
+      .join('students','students.id','=','classes_students.student_id')
+      .select('classes.*')
+      .where(
+        using,info
+      )
+      .then(function(data){
+        // console.log('data',data);
+        // console.log('callback',callback);
+        if (callback){
+            callback(data);
+          }
+        else {
+          return data;
+          }
+        }
+      )
+  }, 
 
 
   /////////////////////
