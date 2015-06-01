@@ -4,7 +4,7 @@ angular.module('reverse.dashboard', [])
     // Allow same origin resource loads.
     'self',
     // Allow loading from our assets domain.  Notice the difference between * and **.
-    'https://youtube.com/embed/**'
+    'https://www.youtube.com/embed/**'
   ]);
 })
 .controller('DashController', function ($scope, $http, $window, $timeout, $q) {
