@@ -10,7 +10,8 @@
   </div>
 
 </div>
-
+<button type="button" ng-click="videoReady=false" style="width:60px;height:30px;" ng-show="videoReady">Close</button>
 <iframe ng-show="videoReady" width="420" height="315"
-  ng-src={{classInfo}}>
+  ng-src= {{classInfo}} frameborder="0" allowfullscreen>
 </iframe>
+
