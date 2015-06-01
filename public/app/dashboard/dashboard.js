@@ -1,5 +1,12 @@
 angular.module('reverse.dashboard', [])
-
+.config(function($sceDelegateProvider) {
+  $sceDelegateProvider.resourceUrlWhitelist([
+    // Allow same origin resource loads.
+    'self',
+    // Allow loading from our assets domain.  Notice the difference between * and **.
+    'https://youtube.com/embed/**'
+  ]);
+})
 .controller('DashController', function ($scope, $http, $window, $timeout, $q) {
 
 $scope.user = {
@@ -32,6 +39,7 @@ $scope.user = {
 	};
 
 	$scope.fetchClasses();
+  $scope.videoReady = false;
 
 	$scope.openClass = function(classe){
 		console.log('class',classe);
@@ -40,8 +48,18 @@ $scope.user = {
 			method: 'GET',
 			url: url
 		}).then(function(resp){
-			$scope.classInfo = resp.data[0].videoURL;
-			console.log($scope.classInfo);
+			var semi = resp.data[0].videoURL;
+			var finalSlashIndex = 0;
+			for (var i = semi.length - 1; i >= 0; i--){
+				if (semi[i] === "="){
+					finalSlashIndex = i;
+					break;
+				}
+			}
+
+			$scope.classInfo = "https://www.youtube.com/embed/"+semi.slice(i+1);
+			$scope.videoReady = true;
+			console.log($scope.classInfo, i);
 		});
 	};
 
