@@ -12,15 +12,6 @@ angular.module('reverse.dashboard', [])
 $scope.user = {
       name: $window.sessionStorage.getItem('user')
     };
-  $scope.events = [];
-  // $scope.event = EventsFactory.currentEvent;
-  // $scope.shouldNotBeClickable = EventsFactory.shouldNotBeClickable;
-  $scope.showEvent = false;
-  $scope.showNewEvent = true;
-
-  /* userList currently populates with all users of Headcount. invitedUsers
-   * gets pushed with any users you invite.
-   */
 
 	// Fetch events that were created by you.
 	$scope.fetchClasses = function () {
@@ -43,6 +34,7 @@ $scope.user = {
 
 	$scope.openClass = function(classe){
 		console.log('class',classe);
+		$scope.currentClass = classe;
 		var url = 'dashboard/'+classe.id;
 		return $http({
 			method: 'GET',
@@ -64,7 +56,18 @@ $scope.user = {
 	};
 	// $scope.studentLink = "";
 	$scope.saveStudentURL = function(){
-		console.log('link',$scope.studentLink);
+		console.log('link',$scope.studentLink, $scope.currentClass);
+		// need to save student vid. Need to have access to student_id and class_id
+		// we need to send POST ajax request.
+		var savePackage = {
+
+		};
+		return $http({
+			method: 'GET',
+			url: '/dashboard/student',
+			data: 
+		}) 
+		
 	};
 
   
