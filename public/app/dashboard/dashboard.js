@@ -39,7 +39,10 @@ $scope.user = {
 		return $http({
 			method: 'GET',
 			url: url
-		})
+		}).then(function(resp){
+			$scope.classInfo = resp.data[0].videoURL;
+			console.log($scope.classInfo);
+		});
 	};
 
   $scope.userList = [];

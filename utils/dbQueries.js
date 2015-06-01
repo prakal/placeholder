@@ -287,7 +287,7 @@ var DBQuery = {
         if(callback){ callback(data); }
         return data[0];
       }else{
-        if(callback){ callback(data[0]); }
+        if(callback){ console.log('found'); callback(data[0]); }
         return data[0];
       }
     });
