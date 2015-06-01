@@ -42,20 +42,20 @@ app.use('/', routes);
 // app.use('/users', users);
 app.use('/auth', auth);
 // // middleware to make sure to block access to internal pages if user is not logged in.
-// app.use(function(req,res,next){
-//   if (req.url === '/auth/login'){
-//     next();
-//   }
-//   else {
-//     if (!req.session.user){
-//       res.redirect('/auth/login');
-//     }
-//     else {
-//       next();
-//     }
-//   }
+app.use(function(req,res,next){
+  if (req.url === '/#/login'){
+    next();
+  }
+  else {
+    if (!req.session.user){
+      res.redirect('/#/login');
+    }
+    else {
+      next();
+    }
+  }
   
-// });
+});
 app.use('/dashboard', dashboard);
 
 // Passport will serialize and deserialize user instances to and from the session.
