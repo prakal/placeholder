@@ -171,7 +171,7 @@ var DBQuery = {
    * @vidInfo  {[Object]}
    * @return {[Boolean]} if successful
    */
-  submitVid: function(vidInfo){
+  submitVid: function(vidInfo, callback){
     //check if a video under the students id already exists
     new StudentVid({
       student_id: vidInfo.student_id,

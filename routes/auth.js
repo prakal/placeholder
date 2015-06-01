@@ -95,6 +95,16 @@ router.get('/logout', function(req, res, next) {
 
 });
 
+
+router.post('/saveStudentURL', function(req, res, next){
+  db.knex('students')
+    .where('username',req.body.username)
+    .select('id')
+    .then(function(resp){
+      console.log('resp',resp);
+    });
+});
+
 module.exports = router;
 
 

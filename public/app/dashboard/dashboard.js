@@ -60,13 +60,19 @@ $scope.user = {
 		// need to save student vid. Need to have access to student_id and class_id
 		// we need to send POST ajax request.
 		var savePackage = {
-
+			videoURL: $scope.studentLink,
+			class_id: $scope.currentClass.id,
+			username: $scope.user.name
 		};
+		console.log('savePackage',savePackage);
 		return $http({
-			method: 'GET',
-			url: '/dashboard/student',
-			data: 
-		}) 
+			method: 'POST',
+			url: '/saveStudentURL',
+			data: savePackage
+		})
+		.then(function(resp){
+
+		});
 		
 	};
 
