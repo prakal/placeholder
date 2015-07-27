@@ -1,6 +1,6 @@
 var express = require('express');
-var router = express.Router();
-var db = require('../app/config.js')
+var router 	= express.Router();
+var db 		= require('../app/config.js')
 
 router.get('/', function(req,res){
 	// remove progress from url to find username
@@ -61,12 +61,6 @@ router.get('/', function(req,res){
 						return db.knex('classes')
 							.where({'classes.discipline_id':row.id})
 							.then(function(x){
-								// x['title'] = row.title;
-								// x['description'] = row.description;
-								// x['discLogo'] = row.discLogo;
-								// x['currentLevelNum'] = row.levelNum;
-								// // x['currentClassNum'] = row.classNum;
-								// x['currentClassNum'] = row.our_class_id;
 								row['totalClass'] = x.length;
 								return row;
 							})
