@@ -9,8 +9,6 @@ var path         = require('path');
 var DBQuery = require('../utils/dbQueries.js')
 var db = require('../app/config.js')
 
-// var studentRoute = require('./student');
-// var instructorRoute = require('./instructor');
 
 router.get('/', function(req, res) {
 	// return all the disciplines
@@ -23,10 +21,6 @@ router.get('/', function(req, res) {
 				.orderBy('classNum', 'asc')
 				.map(function(classData){
 					console.log('classData',classData);
-					// discipline.classes = classData;
-					// discipline.totalClass = classData.length;
-					// classData.discipline = discipline;
-					
 					return db.knex('levels')
 						.where({'levels.class_id':classData.id})
 						.then(function(datapack){
@@ -65,9 +59,7 @@ db.knex('disciplines')
 				.where({'classes.discipline_id': discipline.id})
 				.map(function(classData){
 					console.log('classData',classData);
-					// discipline.classes = classData;
-					// discipline.totalClass = classData.length;
-					// classData.discipline = discipline;
+
 					
 					return db.knex('levels')
 						.where({'levels.class_id':classData.id})
@@ -115,10 +107,6 @@ db.knex('disciplines')
 				.where({'classes.discipline_id': discipline[0].id})
 				.map(function(classData){
 					console.log('classData',classData);
-					// discipline.classes = classData;
-					// discipline.totalClass = classData.length;
-					// classData.discipline = discipline;
-					
 					return db.knex('levels')
 						.where({'levels.class_id':classData.id})
 						.then(function(datapack){
@@ -189,9 +177,6 @@ router.get('/:discipline_id/class/:class_id', function(req, res) {
 		.where({'classes.discipline_id': discIDfromURL, 'classes.classNum': classIDfromURL})
 		.then(function(classData){
 			console.log('classData',classData);
-			// discipline.classes = classData;
-			// discipline.totalClass = classData.length;
-			// classData.discipline = discipline;
 			if (!classData[0]){
 				// trigger error
 				return;
@@ -252,9 +237,6 @@ router.get('/:discipline_id/class/:class_id/level', function(req, res) {
 		.where({'classes.discipline_id': discIDfromURL, 'classes.classNum': classIDfromURL})
 		.then(function(classData){
 			console.log('classData',classData);
-			// discipline.classes = classData;
-			// discipline.totalClass = classData.length;
-			// classData.discipline = discipline;
 			if (!classData[0]){
 				// trigger error
 				return;
@@ -300,9 +282,6 @@ router.get('/:discipline_id/class/:class_id/level/:level_id', function(req, res)
 		.where({'classes.discipline_id': discIDfromURL, 'classes.classNum': classIDfromURL})
 		.then(function(classData){
 			console.log('classData',classData);
-			// discipline.classes = classData;
-			// discipline.totalClass = classData.length;
-			// classData.discipline = discipline;
 			if (!classData[0]){
 				// trigger error
 				return;
