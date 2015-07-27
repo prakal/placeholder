@@ -1,8 +1,6 @@
 [![Stories in Ready](https://badge.waffle.io/cantankerous-muffin/placeholder.png?label=ready&title=Ready)](https://waffle.io/cantankerous-muffin/placeholder)
-# placeholder
 
-
-# Urban Temple
+# [Urban Temple](https://urbantemple.herokuapp.com)
 An online martial arts education platform based on video feedbacks. Nearly all online education platforms are purely one way communications, especially in physical activities. We merely observe a video and are expected to immitate, a "monkey see, monkey do" system. 
 
 Urban Temple follows the strict progression system of traditional martial arts schools. Students are only able to view content appropriate to their level, this is done by a progression system of ranks. Once a student believes themselves ready, or wishes for proper feedback from their instructor, they may submit a link to a video they uploaded (like Youtube) of their performance. 

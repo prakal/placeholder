@@ -11,11 +11,11 @@ var session      = require('express-session');
 var routes       = require('./../routes/index');
 var users        = require('./../routes/user');
 var dashboard    = require('./../routes/dashboard');
-var Student        = require('../app/models/student');
-var Instructor        = require('../app/models/instructor');
+var Student      = require('../app/models/student');
+var Instructor   = require('../app/models/instructor');
 var auth         = require('./../routes/auth');
-var student         = require('./../routes/student');
-var api         = require('./../routes/api');
+var student      = require('./../routes/student');
+var api          = require('./../routes/api');
 
 // Authentication
 var LocalStrategy = require('passport-local').Strategy;
@@ -42,39 +42,8 @@ app.use(session({
 // Routing
 app.use('/', routes);
 app.use('/api', api);
-// app.use('/checkauth', routes);
 app.use('/api/user', users);
 app.use('/auth', auth);
-
-// checking authentication (auth_app line 31)
-// app.use(function(req,res,next){
-//   if (req.url === '/checkauth') {
-//     if(!req.session.user) {
-//       console.log('session dont exist');
-//       res.json({isAuthed: false});
-//     } else {
-//       //make query
-//       res.json({isAuthed: true, username: req.session.user});
-//       console.log('user is authorized');
-//       // res.end();
-//     }
-//   }
-// });
-
-// middleware to make sure to block access to internal pages if user is not logged in.
-// app.use(function(req,res,next){
-//   if (req.url === '/auth/login'){
-//     next();
-//   }
-//   else {
-//     if (!req.session.user){
-//       res.redirect('/auth/login');
-//     }
-//     else {
-//       next();
-//     }
-//   }
-// });
 
 // Passport will serialize and deserialize user instances to and from the session.
 // Not using these right now, maybe later?
@@ -123,14 +92,6 @@ passport.use('local',new LocalStrategy(
     });
 
   }));
-
-// Catch 404 and forward to error handler
-// app.use(function(req, res, next) {
-//   var err = new Error('Not Found');
-//   err.status = 404;
-//   next(err);
-// });
-// error handlers
 
 // development error handler
 // will print stacktrace
