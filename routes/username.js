@@ -1,6 +1,6 @@
 var express = require('express');
-var router = express.Router();
-var db = require('../app/config.js')
+var router 	= express.Router();
+var db 			= require('../app/config.js')
 
 var usernameProgressRoute = require('./usernameProgress');
 var usernameFeedbackRoute = require('./usernameFeedback');
