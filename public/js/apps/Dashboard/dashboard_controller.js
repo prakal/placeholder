@@ -43,7 +43,7 @@ define([
           require(["entities/users"], function() {
             var fetchUser = VirtualDojo.request("entities:users:get", {username: UTConfig.username});
             fetchUser
-              // instantitate the new user model based on the data returned from ajax request
+              // instantiate the new user model based on the data returned from ajax request
               .done(function(data){
                 var userModel = new UserModels.User(data);
                 // save the user's account type to global object 
