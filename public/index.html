@@ -4,18 +4,34 @@
     <meta charset="utf-8">
     <title>Urban Temple</title>
       <link href="css/urbanTemple_main.css" rel="stylesheet">
-      <link href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/1.12.2/semantic.min.css" rel="stylesheet">
-      <link href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/1.12.3/components/form.min.css" rel="stylesheet">
+
+      <link class="ui" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/1.12.2/semantic.min.css" rel="stylesheet">
   </head>
 
   <body class="white-bg">
     <!-- Application Regions -->
     <div id="app-container">
       <div id="sidenav-region"></div>
-      <div id="main-region" class="container"></div>
+      <div id="main-region" class="container">
+      </div>
     </div>
     <script src="js/vendor/require.js"></script>
     <script src="js/main.js"></script>
+    <script src="js/vendor/jquery.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.0.7/semantic.js"></script>
+    <script type="text/javascript">
+        //your code here
+        $( document ).ready(function() {
+          document.getElementById('sidebar-activate').addEventListener('click',function(){
+            console.log('clicked');
+            $('.ui.sidebar').sidebar('toggle');
+          });
+        });
 
+    </script>
+    <div id="sidebar-activate" style="float:right;">
+      Sidebar
+    </div> 
+    
   </body>
 </html>
