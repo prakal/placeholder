@@ -1,4 +1,5 @@
 <div id="profile-layout-header-container">
+
   <h1 class="ui header">
     Welcome, <%= firstname + " " + lastname %>
   </h1>
