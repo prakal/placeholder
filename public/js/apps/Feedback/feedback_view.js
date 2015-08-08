@@ -53,7 +53,7 @@ define([
         },
 
         initialize: function() {
-          console.log("kkkkkrtrtrtrtkkkk", this.model);
+          // console.log("kkkkkrtrtrtrtkkkk", this.model);
         }
 
       });
