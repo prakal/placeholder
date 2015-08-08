@@ -21,7 +21,7 @@
   color: chocolate;
 }
 
-video#bgvid {
+/*video#bgvid {
   display: inline;
   position: fixed;
   opacity: 0.8;
@@ -37,14 +37,14 @@ video#bgvid {
   background-color: grey;
   background-size: cover;
 }
-
+*/
 .login-form-item {
   opacity: 0.7;
   padding: 4px 0;
 }
 
 #signupLink {
-  color: rgb(219, 189, 138);
+  color: rgb(219, 0, 0);
   text-decoration: underline;
   cursor: pointer;
 }
@@ -255,5 +255,9 @@ video#bgvid {
   text-align: center;
 }
 
-
+body {
+  background-image : url("/img/bg2.jpg"); 
+  background-repeat: no-repeat;
+  background-size:cover;
+}
 
