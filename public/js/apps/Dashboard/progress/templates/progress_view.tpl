@@ -1,4 +1,5 @@
-<div class="ui segment dashboard-level">
+<div class="ui raised segment" style="width: 1000px;
+  background-color: rgb(112,186,112);">
     <h2 class="sub header"> <%= disciplineTitle + " : " + currentLevelTitle %></h2>
   <div class="progress-bar"></div>
 </div>
