@@ -11,9 +11,9 @@ router.get('/', function(req,res){
 			markers.push(i);
 		}
 	}
-	console.log('markers',markers);
+	// console.log('markers',markers);
 	var username = req.originalUrl.slice(markers[1]+1,markers[2]);
-	console.log('usernameFromURL', username);
+	// console.log('usernameFromURL', username);
 
 	var userPackage = [];
 	var disciplinePackage = {};
@@ -33,7 +33,7 @@ router.get('/', function(req,res){
 				db.knex('progress')
 					.where({'progress.student_id':studentData[0].id})
 					.map(function(row){
-						console.log('row',row);
+						// console.log('row',row);
 						return db.knex('classes')
 							.where({'classes.id':row.class_id})
 							.then(function(classData){
@@ -43,7 +43,7 @@ router.get('/', function(req,res){
 						});
 					})
 					.map(function(row){
-						console.log('classData',row);
+						// console.log('classData',row);
 						return db.knex('disciplines')
 							.where({'disciplines.id':row.discipline_id})
 							.then(function(discData){
@@ -56,7 +56,7 @@ router.get('/', function(req,res){
 							})
 					})
 					.map(function(row){
-						console.log('row',row);
+						// console.log('row',row);
 						// total classes for discipline
 						return db.knex('classes')
 							.where({'classes.discipline_id':row.id})
@@ -66,29 +66,29 @@ router.get('/', function(req,res){
 							})
 					})
 					.map(function(y){
-						console.log('y',y);
+						// console.log('y',y);
 						// y['length'] = y.length;
 						// find levelTitle from levelNum
 						return db.knex('levels')
 							.where({'levels.levelNum':y.levelNum, 'levels.class_id': y.currentClassNum})
 							.then(function(l){
-								console.log('l',l);
+								// console.log('l',l);
 								y['currentLevelTitle'] = l[0].title;
 								return y;
 							})
 					})
 					.map(function(z){
-						console.log('z',z);
+						// console.log('z',z);
 						return db.knex('levels')
 							.where({'levels.class_id':z.currentClassNum})
 							.then(function(zz){
-								console.log('zz',zz);
+								// console.log('zz',zz);
 								z['percentage'] = 100*z.levelNum/zz.length;
 								return z;
 							})
 					})
 					.then(function(aa){
-						console.log('aa',aa);
+						// console.log('aa',aa);
 						res.json(aa);
 					});
 			}

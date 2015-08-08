@@ -11,7 +11,7 @@ router.get('/', function(req, res) {
 		}
 	}
 	var usernameFromURL = req.originalUrl.slice(markers[1]+1,markers[2]);
-	console.log('markers',markers,usernameFromURL);
+	// console.log('markers',markers,usernameFromURL);
 	db.knex('students')
 		.where({'students.username': usernameFromURL})
 		.select('id')
@@ -21,7 +21,7 @@ router.get('/', function(req, res) {
 				db.knex('instructors')
 					.where({'instructors.username': usernameFromURL})
 					.then(function(instructorData){
-						console.log('username',instructorData[0].username,' req.session.user', req.session.user);
+						// console.log('username',instructorData[0].username,' req.session.user', req.session.user);
 						if (req.session.user === instructorData[0].username){
 							db.knex('feedback')
 								.where({'feedback.instructor_id': instructorData[0].id})
@@ -42,7 +42,7 @@ router.get('/', function(req, res) {
 										})
 								})
 								.then(function(collatedFeedbackData){
-									console.log('collatedFeedbackData',collatedFeedbackData);
+									// console.log('collatedFeedbackData',collatedFeedbackData);
 									res.json(collatedFeedbackData);
 								});
 						} else {
@@ -53,7 +53,7 @@ router.get('/', function(req, res) {
 						res.json({'message': 'No student/instructor with this username found.'});
 					});
 			} else {
-				console.log('students', req.session.user);
+				// console.log('students', req.session.user);
 				if (usernameFromURL === req.session.user){
 					db.knex('feedback')
 						.where({'feedback.student_id': user_id[0].id})
@@ -68,7 +68,7 @@ router.get('/', function(req, res) {
 								})
 						})
 						.then(function(collatedFeedbackData){
-							console.log('collatedFeedbackData',collatedFeedbackData);
+							// console.log('collatedFeedbackData',collatedFeedbackData);
 							res.json(collatedFeedbackData);
 						});
 				} else {
