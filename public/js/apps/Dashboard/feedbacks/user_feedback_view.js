@@ -26,7 +26,7 @@ define([
         },
 
         serializeData: function() {
-          console.log("gggggg", this.model);
+          // console.log("gggggg", this.model);
           var model = this.model;
           var username = model.get("studentUsername");
           var classTitle = model.get("classTitle");
