@@ -51,8 +51,17 @@ router.get('/', function(req,res){
 								discData[0].levelNum = row.levelNum;
 								// discData[0].classNum = row.classNum;
 								// class_id is classNum for now since we might not have put the correct values of classNum in our DB.
-								discData[0]['currentClassNum'] = row.classNum;
-								return discData[0];
+
+								// short circuit classNum into rankNum instead.
+								return db.knex('ranks')
+									.where({'ranks.student_id':studentData[0].id})
+									.where({'ranks.discipline_id':row.discipline_id})
+									.then(function(rankData){
+										console.log('rankData',rankData[0].rankNum);
+										discData[0]['currentClassNum'] = rankData[0].rankNum;
+										return discData[0];
+									})
+								// discData[0]['currentClassNum'] = row.classNum;
 							})
 					})
 					.map(function(row){
@@ -88,7 +97,7 @@ router.get('/', function(req,res){
 							})
 					})
 					.then(function(aa){
-						// console.log('aa',aa);
+						console.log('aa',aa);
 						res.json(aa);
 					});
 			}
