@@ -44,9 +44,8 @@ define([
         },
 
         initialize: function() {
-
           // permission access control 
-          if (this.model.get("disciplineId") === 1 ) {
+          if (this.model.get("discipline_id") === 1 ) {
             if (this.model.get("classNum") > UTConfig.currentKendoClass) {
               this.$el.addClass("class-thumb card disabled");
             } else {
