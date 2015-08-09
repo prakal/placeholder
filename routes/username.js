@@ -95,6 +95,7 @@ router.get('/', function(req, res) {
 					.select('*')
 					.then(function(data){
 						// console.log('classes_students data',data);
+						var inner = 0;
 						for (var i = 0; i < data.length; i ++){
 							db.knex('classes')
 							.where({'classes.id':data[i].class_id})
@@ -110,11 +111,12 @@ router.get('/', function(req, res) {
 											.where({'student_id':data[0].student_id})
 											.select('*')
 											.then(function(data3){
-												// console.log('data3',data3);
-												userRankArray.push({'disciplineTitle':data2[0].title, 'rankNum':data3[0].rankNum, 'rankTitle':data3[0].rankTitle, 'rankIcon':data3[0].rankIcon});
+												// console.log('data3',data3[inner]);
+												userRankArray.push({'disciplineTitle':data2[0].title, 'rankNum':data3[inner].rankNum, 'rankTitle':data3[inner].rankTitle, 'rankIcon':data3[inner].rankIcon});
 												// console.log(i,'i','length',data.length);
+												inner++;
 												if (userRankArray.length === data.length){
-													// console.log('userRankArray',userRankArray);
+													console.log('userRankArray',userRankArray);
 													// res.json(userPackage);
 													res.json({'isInstructor':false,'username':username,'firstname':originalData[0].firstName,'lastname':originalData[0].lastName,'ranks':userRankArray});
 												}	
