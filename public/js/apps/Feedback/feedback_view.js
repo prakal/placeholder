@@ -25,7 +25,8 @@ define([
           var requestData = {
             feedbackId: this.model.get("id"),
             comment: this.ui.commentBox.val(),
-            approved: true, 
+            approved: true,
+            discipline_id: this.model.get("Class").discipline_id,
           }
 
           VirtualDojo.trigger("entities:feedback:approve", requestData)
