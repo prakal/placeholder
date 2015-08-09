@@ -1,6 +1,6 @@
 <div class="ui raised segment" style="width: 1000px;
-  background-color: rgb(112,186,112);">
-    <h2 class="sub header"> <%= disciplineTitle + " : " + currentLevelTitle %></h2>
+  background-color: rgba(186,124,0,0.1);">
+    <span class="sub header" style="font-size:2em"> <b> <%= disciplineTitle %> </b> </span> <span class="sub header" style="font-size:1em"> <%= currentLevelTitle %> </span>
   <div class="progress-bar"></div>
 </div>
 <br>

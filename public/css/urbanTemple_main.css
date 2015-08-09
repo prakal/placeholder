@@ -93,6 +93,10 @@
   /*background: white;*/
 }
 
+#current-level-video-header{
+  font-size: 2em;
+}
+
 .logo-container img {
     width: 100%;
     height: 100%;
@@ -101,6 +105,10 @@
 .logo-container {
   width: 100px;
   height: auto;
+}
+
+#profile-region {
+  background-color: rgba(186,124,0,0.1);
 }
 
 #main-region h1.level-header {

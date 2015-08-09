@@ -1,6 +1,6 @@
 <div id="profile-layout-header-container">
 
-  <h1 class="ui header">
+  <h1 class="ui header" style="font-size: 3em;">
     Welcome, <%= firstname + " " + lastname %>
   </h1>
 </div>
