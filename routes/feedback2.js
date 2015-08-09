@@ -103,16 +103,29 @@ router.post('/submit', function(req, res) {
 							//successful insert. get the last value added with lastval() or RETURNING last added in original query
 							var prev = returnData.rows[0];
 							// console.log('data',data,'prev_id',prev);
-							db.knex('instructors')
-								.where({'instructors.id': data[0].instructor_id})
-								.select('username')
-								.then(function(instructor_username){
-									prev.instructorName = instructor_username[0].username;
-									prev.instructor_id = data[0].instructor_id;
-									prev.studentName = req.session.user;
-									prev.Class = data[0];
-									res.json(prev);
+
+							//update users' ranks in ranks table
+							// FIXME: this has an error in it since multiple updates on same feedback will lead to rankNum increasing. ensure this gets corrected before production.
+							db.knex.raw('update ranks SET rankNum = rankNum+1 WHERE student_id = '+student_idData[0].id+' AND discipline_id = '+req.body.disciplineID+';')
+								.then(function(){
+									console.log('successful in increasing rank of student after being approved by instructor.');
 								})
+								.then(function(){
+									db.knex('instructors')
+										.where({'instructors.id': data[0].instructor_id})
+										.select('username')
+										.then(function(instructor_username){
+											prev.instructorName = instructor_username[0].username;
+											prev.instructor_id = data[0].instructor_id;
+											prev.studentName = req.session.user;
+											prev.Class = data[0];
+											res.json(prev);
+										})
+								})
+								.catch(function(err){
+									console.log('error',err);
+								})
+
 
 						})
 						.catch(function(err){
@@ -149,7 +162,13 @@ router.post('/:feedback_id/update', function(req, res) {
 								// console.log('gets to raw');
 								db.knex.raw('UPDATE feedback SET comment='+"'"+req.body.comment+"'"+', updated_at=now(), approved='+"'"+req.body.approved+"'"+' WHERE id = '+req.url.match(/\w+/)+' returning *;')
 								.then(function(data){
+									console.log('data.rows[0]',data.rows[0]);
 									// console.log('data row',data.rows);
+									// FIXME: this has an error in it since multiple updates on same feedback will lead to rankNum increasing. ensure this gets corrected before production.
+									db.knex.raw('update ranks SET "rankNum" = "rankNum"+1 WHERE student_id = '+data.rows[0].student_id+' AND discipline_id = '+req.body.discipline_id+';')
+										.then(function(){
+											console.log('successful in increasing rank of student after being approved by instructor.');
+										})
 									res.json(data.rows[0]);
 								})
 							}
